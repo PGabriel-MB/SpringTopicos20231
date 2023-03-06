@@ -1,15 +1,17 @@
 package com.fatec.pablo.springtopicos20231.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fatec.pablo.springtopicos20231.entity.Usuario;
+import com.fatec.pablo.springtopicos20231.exception.UsuarioNaoEncontradoException;
 import com.fatec.pablo.springtopicos20231.repository.UsuarioRepository;
 
 @Service
-public class UsuarioService {
+public class UsuarioService implements IUsuarioService{
 
     @Autowired
     private UsuarioRepository usuarioRepo;
@@ -26,5 +28,13 @@ public class UsuarioService {
 
     public List<Usuario> buscarTodosUsuarios() {
         return usuarioRepo.findAll();
+    }
+
+    public Usuario buscarUsuarioPorIdUsuario(Long id) {
+        Optional<Usuario> usuarioOp = usuarioRepo.findById(id);
+        if(usuarioOp.isEmpty()) {
+            throw new UsuarioNaoEncontradoException("Usuário não existe");
+        }
+        return usuarioOp.get();
     }
 }
