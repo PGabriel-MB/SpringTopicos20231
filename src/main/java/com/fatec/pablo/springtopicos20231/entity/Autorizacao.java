@@ -1,11 +1,15 @@
 package com.fatec.pablo.springtopicos20231.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "aut_autorizacao")
@@ -18,6 +22,9 @@ public class Autorizacao {
 
     @Column(name = "aut_nome")
     private String nome;
+
+    @ManyToMany()
+    List<Usuario> usuarios;
 
     public Autorizacao(String nome) {
         this.nome = nome;
