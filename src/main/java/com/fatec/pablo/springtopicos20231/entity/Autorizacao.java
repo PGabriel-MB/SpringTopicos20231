@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name = "aut_autorizacao")
@@ -23,8 +25,9 @@ public class Autorizacao {
     @Column(name = "aut_nome")
     private String nome;
 
-    @ManyToMany()
-    List<Usuario> usuarios;
+    @ManyToMany(mappedBy = "autorizacoes")
+    @JsonIgnore
+    private List<Usuario> usuarios;
 
     public Autorizacao(String nome) {
         this.nome = nome;
@@ -46,5 +49,13 @@ public class Autorizacao {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }   
+    }
+
+    public List<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
+    }
 }
