@@ -3,10 +3,14 @@ package com.fatec.pablo.springtopicos20231.entity;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "mdc_medicao")
 public class Medicao {
 
     @Id
@@ -18,13 +22,13 @@ public class Medicao {
     private LocalDateTime data_hora;
 
     @Column(name = "mdc_temperatura")
-    private float temperatura;
+    private Float temperatura;
 
     @Column(name = "mdc_umidade")
-    private float umidade;
+    private Float umidade;
 
     @Column(name = "mdc_particulas")
-    private float particulas;
+    private Float particulas;
 
     @Column(name = "mdc_status")
     private String status;
@@ -48,27 +52,27 @@ public class Medicao {
         this.data_hora = data_hora;
     }
 
-    public float getTemperatura() {
+    public Float getTemperatura() {
         return temperatura;
     }
 
-    public void setTemperatura(float temperatura) {
+    public void setTemperatura(Float temperatura) {
         this.temperatura = temperatura;
     }
 
-    public float getUmidade() {
+    public Float getUmidade() {
         return umidade;
     }
 
-    public void setUmidade(float umidade) {
+    public void setUmidade(Float umidade) {
         this.umidade = umidade;
     }
 
-    public float getParticulas() {
+    public Float getParticulas() {
         return particulas;
     }
 
-    public void setParticulas(float particulas) {
+    public void setParticulas(Float particulas) {
         this.particulas = particulas;
     }
 

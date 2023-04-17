@@ -12,4 +12,4 @@ create table mdc_medicao (
 
 insert into mdc_medicao (mdc_data_hora, mdc_temperatura, mdc_umidade, mdc_particulas)
     values (current_timestamp(), 28.7, 0.4, 0.3),
-            (current_timestamp(), 28.8, 0.37, null);
+            (current_timestamp(), 28.8, 0.37, 0.5);
